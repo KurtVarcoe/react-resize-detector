@@ -10,6 +10,8 @@ import type {
   useResizeDetectorProps
 } from './types';
 
+type ResizeObserverCallback = (entries: ResizeObserverEntry[], observer: ResizeObserver) => void;
+
 function useResizeDetector<T extends HTMLElement = any>({
   skipOnMount = false,
   refreshMode,
