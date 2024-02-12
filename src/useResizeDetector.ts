@@ -125,8 +125,10 @@ function useResizeDetector<T extends HTMLElement = any>({
   useEffect(() => {
     let resizeObserver: ResizeObserver | undefined;
     if (refElement) {
-      resizeObserver = new window.ResizeObserver(resizeHandler);
-      resizeObserver.observe(refElement, observerOptions);
+      try {
+        resizeObserver = new window.ResizeObserver(resizeHandler);
+        resizeObserver.observe(refElement, observerOptions);
+      } catch (err) {}
     } else {
       if (size.width || size.height) {
         setSize({ width: undefined, height: undefined });
